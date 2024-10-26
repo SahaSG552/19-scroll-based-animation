@@ -66,15 +66,15 @@ const toonMaterial = new THREE.MeshToonMaterial({
 const objectsDistances = 4;
 const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), toonMaterial);
 const torus = new THREE.Mesh(new THREE.TorusGeometry(1, 0.3), toonMaterial);
-const cone = new THREE.Mesh(new THREE.ConeGeometry(0.6, 1, 4), toonMaterial);
+const cone = new THREE.Mesh(new THREE.ConeGeometry(1, 1.5, 4), toonMaterial);
 
 cube.position.y = -objectsDistances * 0;
 torus.position.y = -objectsDistances * 1;
 cone.position.y = -objectsDistances * 2;
 
-cube.position.x = 1.5;
-torus.position.x = -1.5;
-cone.position.x = 1.5;
+cube.position.x = 1.3;
+torus.position.x = -1.3;
+cone.position.x = 1.3;
 scene.add(cube, torus, cone);
 const objects = [cube, torus, cone];
 
@@ -94,7 +94,7 @@ const sizes = {
 };
 
 // Particles
-const particlesCount = 5000;
+const particlesCount = 8000;
 const particlesPositions = new Float32Array(particlesCount * 3);
 for (let i = 0; i < particlesCount; i++) {
   particlesPositions[i * 3 + 0] = (Math.random() - 0.5) * 10;
