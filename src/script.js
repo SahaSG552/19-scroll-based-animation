@@ -9,12 +9,17 @@ const gui = new GUI();
 
 const parameters = {
   materialColor: "#ffeded",
+  toonMaterialColor: "#ffeded",
 };
 
 gui.addColor(parameters, "materialColor").onChange(() => {
-  toonMaterial.color.set(parameters.materialColor);
   particlesMaterial.color.set(parameters.materialColor);
 });
+gui.addColor(parameters, "toonMaterialColor").onChange(() => {
+  // toonMaterial.color.set(parameters.materialColor);
+  directionalLight.color.set(parameters.materialColor);
+});
+gui.close();
 /**
  * Base
  */
@@ -26,14 +31,36 @@ const scene = new THREE.Scene();
 
 // TextureLoader
 const textureLoader = new THREE.TextureLoader();
-const gradientTexture = textureLoader.load("/textures/gradients/3.jpg");
+
+const gradientTexture = textureLoader.load(
+  // URL to the texture
+  "/textures/gradients/3.jpg",
+
+  // onLoad callback
+  function (texture) {
+    console.log("Texture loaded successfully:", texture);
+    // You can now use the texture in your material, etc.
+  },
+
+  // onProgress callback (optional, can be omitted)
+  function (xhr) {
+    console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+  },
+
+  // onError callback
+  function (err) {
+    console.error("An error happened while loading the texture:", err);
+  }
+);
+
+// const gradientTexture = textureLoader.load("/textures/gradients/3.jpg");
 gradientTexture.magFilter = THREE.NearestFilter;
 
 // Materials
 const toonMaterial = new THREE.MeshToonMaterial({
   gradientMap: gradientTexture,
 });
-//toonMaterial.color = new THREE.Color("#938379");
+// toonMaterial.color = new THREE.Color("#938379");
 
 // Objects
 const objectsDistances = 4;
@@ -52,7 +79,7 @@ scene.add(cube, torus, cone);
 const objects = [cube, torus, cone];
 
 // Lights
-const directionalLight = new THREE.DirectionalLight("#e3f075");
+const directionalLight = new THREE.DirectionalLight("#f0dd75");
 directionalLight.intensity = 2;
 directionalLight.position.set(1, 0.5, 2);
 // scene.add(new THREE.DirectionalLightHelper(directionalLight, 5));

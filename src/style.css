@@ -1,7 +1,6 @@
-*
-{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 /* html,
@@ -10,33 +9,32 @@ body
     overflow: hidden;
 } */
 
-html
-{background: #555555;}
-
-.webgl
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    outline: none;
+html {
+  background: #555555;
 }
 
-
-.section
-{
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    font-family: 'Cabin', sans-serif;
-    color: #ffeded;
-    text-transform: uppercase;
-    font-size: 7vmin;
-    padding-left: 10%;
-    padding-right: 10%;
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
 }
 
-section:nth-child(odd)
-{
-    justify-content: flex-end;
+.section {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  height: 100vh;
+  position: relative;
+  font-family: "Cabin", sans-serif;
+  color: #ffeded;
+  text-transform: uppercase;
+  text-wrap: wrap;
+  font-size: 7vmin;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+section:nth-child(odd) {
+  justify-content: flex-end;
 }
